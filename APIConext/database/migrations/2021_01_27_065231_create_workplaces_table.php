@@ -15,6 +15,12 @@ class CreateWorkplacesTable extends Migration
     {
         Schema::create('workplaces', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            $table->string('description');
+            $table->string('location');
+            $table->string('options');
+            $table->foreign('id')->references('id')->on('users');
             $table->timestamps();
         });
     }

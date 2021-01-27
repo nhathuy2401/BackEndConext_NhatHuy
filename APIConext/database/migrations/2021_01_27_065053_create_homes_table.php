@@ -15,6 +15,10 @@ class CreateHomesTable extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
+            $table->string('business_type');
+            $table->string('user');
+            $table->string('expertise');
+            $table->string('explore');
             $table->timestamps();
         });
     }

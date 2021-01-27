@@ -15,6 +15,12 @@ class CreateVouchersTable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->dateTime('time');
+            $table->string('contact');
+            $table->foreign('id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

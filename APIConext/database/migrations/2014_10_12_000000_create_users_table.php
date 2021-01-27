@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('business_type');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('verified')->default(\App\User::UNVERIFIED_USER);
             $table->rememberToken();
             $table->timestamps();
         });
