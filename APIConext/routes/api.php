@@ -17,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::resource('users', 'User\UserController', ['only' => ['create', 'edit']]);
+
+Route::resource('homes', 'Home\HomeController', ['only' => ['index', 'show']]);
+
+Route::resource('event', 'Event\EventController', ['only' => ['index', 'show']]);
+
+Route::resource('vouchers', 'Voucher\VoucherController', ['only' => ['index', 'show']]);
+
+Route::resource('workplaces', 'Workplace\WorkplaceController', ['only' => ['index', 'show']]);
+
+Route::resource('contacts', 'Contact\ContactController', ['only' => ['show']]);
+
+
+
+

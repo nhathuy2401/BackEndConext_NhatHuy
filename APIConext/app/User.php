@@ -10,13 +10,24 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const VERIFIED_USER = '1';
+    const UNVERIFIED_USER = '0';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'gender',
+        'expertise',
+        'business_type',
+        'workplace',
+        'verified_token',
+
     ];
 
     /**
@@ -25,7 +36,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'verified_token',
+
     ];
 
     /**
@@ -36,4 +50,41 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isVerified()
+    {
+        return $this->verified == self::VERIFIED_USER;
+    }
+
+    public function unVerified()
+    {
+        return $this->unverifed == self::UNVERIFIED_USER;
+    }
+
+    public static function generateVerifiedCode()
+    {
+        return str_random(40);
+    }
+
+    public function contacts()
+    {
+        return $this->belongsTo(Contact::class);
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
+
+    public function vouchers()
+    {
+        return $this->belongsToMany(Voucher::class);
+    }
+
+    public function workplaces()
+    {
+        return $this->belongsTo(Workplace::class);
+    }
+
+
 }
