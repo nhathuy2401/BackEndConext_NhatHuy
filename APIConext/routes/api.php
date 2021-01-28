@@ -29,7 +29,7 @@ Route::resource('vouchers', 'Voucher\VoucherController', ['only' => ['index', 's
 
 Route::resource('workplaces', 'Workplace\WorkplaceController', ['only' => ['index', 'show']]);
 
-Route::resource('contacts', 'Contact\ContactController', ['only' => ['show']]);
+Route::resource('contacts', Contact\ContactController::class , ['only' => ['show', 'index']]);
 
 
 

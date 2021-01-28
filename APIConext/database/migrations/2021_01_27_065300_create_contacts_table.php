@@ -13,10 +13,11 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            $table->integer('hotline');
+            $table->string('hotline');
             $table->string('email');
             $table->timestamps();
         });

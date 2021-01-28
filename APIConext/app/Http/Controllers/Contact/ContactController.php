@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Contact;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+
+        $contact = Contact::all();
+
+        return response()->json(['contacts'=>$contact],200);
     }
 
     /**
@@ -46,7 +50,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
