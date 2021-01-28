@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('users', 'User\UserController', ['only' => ['create', 'edit']]);
+Route::resource('users', User\UserController::class);
+//Route::group(['namespace' => 'User'], function (){
+//});
 
 Route::resource('homes', 'Home\HomeController', ['only' => ['index', 'show']]);
 
