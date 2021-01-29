@@ -50,6 +50,7 @@ class UserController extends Controller
         $data = $request ->all();
         $data['password'] = bcrypt($request->password);
         $data['verified']= User::UNVERIFIED_USER;
+
         $data['verified_token']=User::generateVerifiedCode();
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Event;
 
+use App\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+
+        $event = Event::all();
+
+        return response()->json(['events'=>$event],201);
     }
 
     /**

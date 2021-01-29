@@ -10,6 +10,7 @@ class Event extends Model
         'title',
         'time',
         'description',
+
     ];
     public function users(){
         return $this->hasMany(Event::class);
