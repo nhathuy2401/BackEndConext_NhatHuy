@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name',200);
             $table->string('email')->unique();
             $table->text('gender');
             $table->string('workplace');
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->text('business_type');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('verified')->default(\App\User::UNVERIFIED_USER);
+            $table->string('verified')->default(\App\User::generateVerifiedCode());
             $table->rememberToken();
             $table->timestamps();
         });
