@@ -46,13 +46,14 @@ class UserController extends Controller
         ];
 
         $this->validate($request,$rules);
+
         $data = $request ->all();
         $data['password'] = bcrypt($request->password);
-        $data['verified']= User::VERIFIED_USER;
+        $data['verified']= User::UNVERIFIED_USER;
         $data['verified_token']=User::generateVerifiedCode();
 
 
-        $user = User::all($data);
+        $user = User::all();
 
         return response()->json(['users'=>$user],201);
     }
@@ -101,6 +102,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return response()->json(['users'=>$user],200);
+
+
+
     }
 }
